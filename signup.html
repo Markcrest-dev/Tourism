@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Tourism</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="fontawesome-free/css/all.css">
+  <style>
+    .login-container {
+      max-width: 450px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-header h2 {
+      color: #006CD1;
+      font-weight: bold;
+    }
+
+    .form-control {
+      border-radius: 25px;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ddd;
+    }
+
+    .login-btn {
+      background-color: #006CD1;
+      color: white;
+      border-radius: 25px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      width: 100%;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background-color: #0056a4;
+      transform: translateY(-2px);
+    }
+
+    .login-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .login-footer a {
+      color: #006CD1;
+      text-decoration: none;
+    }
+
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .input-group-text {
+      border-radius: 25px 0 0 25px;
+      background-color: #f8f9fa;
+    }
+
+    .password-field {
+      border-radius: 0 25px 25px 0;
+    }
+
+    .login-bg {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/images/img7.png);
+      background-size: cover;
+      background-position: center;
+      min-height: calc(100vh - 76px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body id="page" class="page">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <h1 class="m-0" style="font-style: italic;">Tourism</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">LOGIN</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="login-bg">
+    <div class="container">
+      <div class="login-container">
+        <div class="login-header">
+          <h2>Create Account</h2>
+          <p class="text-muted">Join us and start exploring</p>
+        </div>
+        <form id="signupForm" action="#" method="post">
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="invalid-feedback">Please enter your full name.</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-lock"></i></span>
+              <input type="password" class="form-control password-field" id="password" name="password"
+                placeholder="Enter your password" required>
+            </div>
+            <div class="invalid-feedback">Password must be at least 6 characters long.</div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-lock"></i></span>
+              <input type="password" class="form-control password-field" id="confirmPassword" name="confirmPassword"
+                placeholder="Confirm your password" required>
+            </div>
+            <div class="invalid-feedback">Passwords do not match.</div>
+          </div>
+          <button type="submit" class="btn login-btn">Sign Up</button>
+        </form>
+        <div class="login-footer">
+          <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      let isValid = true;
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const confirmPassword = document.getElementById('confirmPassword');
+
+      // Name validation
+      if (!name.value.trim()) {
+        name.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        name.classList.remove('is-invalid');
+        name.classList.add('is-valid');
+      }
+
+      // Email validation
+      if (!email.value || !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        email.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        email.classList.remove('is-invalid');
+        email.classList.add('is-valid');
+      }
+
+      // Password validation
+      if (!password.value || password.value.length < 6) {
+        password.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        password.classList.remove('is-invalid');
+        password.classList.add('is-valid');
+      }
+
+      // Confirm password validation
+      if (!confirmPassword.value || confirmPassword.value !== password.value) {
+        confirmPassword.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        confirmPassword.classList.remove('is-invalid');
+        confirmPassword.classList.add('is-valid');
+      }
+
+      if (isValid) {
+        alert('Sign up successful! This is a demo. In a real application, you would be redirected to the login page.');
+        // window.location.href = 'login.html';
+      }
+    });
+  </script>
+</body>
+
+</html>
